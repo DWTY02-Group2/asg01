@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parfumerie Vault - HTML5 Features</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #E6A9E6; /* Lilac background */
+            overflow-x: hidden; /* Prevent horizontal scrolling */
+            position: relative; /* For positioning the bubbles */
+        }
+
+        /* Homepage Header with Glitter Animation */
+        #homepage-header {
+            margin-top: 100px;
+            animation: fadeIn 2s ease-in-out;
+            font-size: 3em;
+            font-weight: bold;
+            color: #D084E4; /* Lilac color for the header */
+        }
+
+        #homepage-header h1 {
+            animation: glitter 3s linear infinite;
+        }
+
+        #homepage-header p {
+            font-size: 1.5em;
+            font-style: italic;
+            opacity: 0;
+            animation: fadeIn 2s ease-in-out 1s forwards;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes glitter {
+            0% {
+                text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.8);
+            }
+            50% {
+                text-shadow: 0 0 20px rgba(255, 255, 255, 1), 0 0 30px rgba(255, 255, 255, 1);
+            }
+            100% {
+                text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.8);
+            }
+        }
+
+        /* Perfume Cards */
+        .container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+            z-index: 1; /* Make sure cards are above bubbles */
+        }
+
+        .perfume {
+            width: 150px;
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            z-index: 2;
+        }
+
+        .perfume:hover {
+            transform: scale(1.1);
+        }
+
+        /* Wishlist Box */
+        #wishlist {
+            width: 200px;
+            height: 300px;
+            border: 2px dashed #ccc;
+            margin-top: 20px;
+            text-align: center;
+            padding: 10px;
+            z-index: 2;
+        }
+
+        /* Bubble Animation */
+        .bubbles {
+            position: fixed; /* Fix the bubbles in place to cover the entire page */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* Ensure bubbles stay in the background */
+            pointer-events: none;
+        }
+
+        .bubble {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite, glitter 2s linear infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) scale(1);
+            }
+            50% {
+                transform: translateY(-100px) scale(1.5);
+            }
+            100% {
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        @keyframes glitter {
+            0% {
+                background: rgba(255, 255, 255, 0.5);
+            }
+            50% {
+                background: rgba(255, 255, 255, 0.9);
+            }
+            100% {
+                background: rgba(255, 255, 255, 0.5);
+            }
+        }
+
+        /* Location and Response */
+        #location, #server-response {
+            margin-top: 20px;
+        }
+
+        /* Button Styles */
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+
+        /* Allow scrolling of the page */
+        html, body {
+            height: 100%;
+        }
+
+        .content {
+            margin-bottom: 100px; /* Give space for scrolling */
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Homepage Header -->
+    <div id="homepage-header">
+        <h1>Parfumerie Vault</h1>
+        <p>The only Parfumerie you need</p>
+    </div>
+
+    <!-- Bubbles Animation -->
+    <div class="bubbles">
+        <div class="bubble" style="animation-delay: 0s; left: 10%;"></div>
+        <div class="bubble" style="animation-delay: 1s; left: 20%;"></div>
+        <div class="bubble" style="animation-delay: 2s; left: 30%;"></div>
+        <div class="bubble" style="animation-delay: 3s; left: 40%;"></div>
+    </div>
+
+    <!-- Perfume Wishlist Section -->
+    <h2>Perfume Wishlist (Drag & Drop)</h2>
+    <div class="container">
+        <div class="box" id="wishlist" ondrop="drop(event)" ondragover="allowDrop(event)">Wishlist</div>
+
+        <!-- Perfume Cards -->
+        <div class="perfume" id="perfume1" draggable="true" ondragstart="drag(event)">
+            <img src="CHgoodgirl.jpg" alt="Carolina Herrera Good Girl" style="width:100px;height:100px;">
+            <p>Carolina Herrera Good Girl</p>
+        </div>
+        <div class="perfume" id="perfume2" draggable="true" ondragstart="drag(event)">
+            <img src="CHblush.jpg" alt="Carolina Herrera Good Girl Blush" style="width:100px;height:100px;">
+            <p>Carolina Herrera Good Girl Blush</p>
+        </div>
+        <div class="perfume" id="perfume3" draggable="true" ondragstart="drag(event)">
+            <img src="CHsparklingice.jpg" alt="Carolina Herrera Good Girl Sparkling Ice" style="width:100px;height:100px;">
+            <p>Carolina Herrera Good Girl Sparkling Ice</p>
+        </div>
+        <div class="perfume" id="perfume4" draggable="true" ondragstart="drag(event)">
+            <img src="CHvelvetfatale.jpg" alt="Carolina Herrera Good Girl Velvet Fatale" style="width:100px;height:100px;">
+            <p>Carolina Herrera Good Girl Velvet Fatale</p>
+        </div>
+    </div>
+
+    <!-- Geolocation and Server-Side Processing -->
+    <h2>Find Nearby Stores</h2>
+    <button onclick="getLocation()">Find Stores</button>
+    <p id="location"></p>
+
+    <h2>Server-Side Processing</h2>
+    <button onclick="fetchNewPerfume()">Fetch New Perfume</button>
+    <div id="server-response"></div>
+
+    <script>
+        // DRAG & DROP FUNCTIONALITY
+        function allowDrop(event) {
+            event.preventDefault(); // Allow the drop by preventing the default behavior
+        }
+
+        function drag(event) {
+            event.dataTransfer.setData("text", event.target.id); // Set data for dragged item
+        }
+
+        function drop(event) {
+            event.preventDefault(); // Prevent default behavior
+            let data = event.dataTransfer.getData("text"); // Get the dragged item
+            let draggedElement = document.getElementById(data);
+
+            // Check if the dragged element is a perfume card
+            if (draggedElement.classList.contains("perfume")) {
+                event.target.appendChild(draggedElement); // Add the perfume card to wishlist
+            }
+        }
+
+        // GEOLOCATION
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else {
+                document.getElementById("location").innerHTML = "Geolocation not supported.";
+            }
+        }
+
+        function showPosition(position) {
+            document.getElementById("location").innerHTML =
+                "Latitude: " + position.coords.latitude + 
+                "<br>Longitude: " + position.coords.longitude;
+        }
+
+        // FETCH DATA FROM SERVER
+        function fetchNewPerfume() {
+            fetch('server.php')
+                .then(response => response.text())
+                .then(data => document.getElementById("server-response").innerHTML = data)
+                .catch(error => console.error('Error:', error));
+        }
+    </script>
+
+</body>
+</html>
