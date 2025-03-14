@@ -3,58 +3,222 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Parfumerie Vault - HTML5 Features</title>
+    <title>Parfumerie Vault</title>
     <style>
+        
+        @font-face {
+            font-family: 'AGraham';
+            src: url('h1_font/agraham.woff2') format('woff2'),
+            url('h1_font/agraham.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'YesevaOne-Regular';
+            src: url('p_font/YesevaOne-Regular.woff2') format('woff2'),
+            url('p_font/YesevaOne-Regular.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+
+        /* Apply the font to h1 */
+        #homepage-header h1 {
+            font-family: 'AGraham', sans-serif;
+            font-size: 3em;
+            font-weight: bold;
+            color: #FFFFFF; /* White color for the header */
+            animation: fadeIn 1s ease-in-out, glow 1.5s ease-in-out 0.5s;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+            margin: 0;
+            padding-bottom: 10px;
+        }
+
+        @font-face {
+            font-family: 'LANENAR_';
+            src: url('body_font/LANENAR_.woff2') format('woff2'),
+            url('body_font/LANENAR_.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        /* Apply fade-in and glow effect to paragraph */
+        #homepage-header p {
+            font-family: 'YesevaOne-Regular', sans-serif;
+            font-size: 1.5em;
+            font-style: italic;
+            color: #FFFFFF;
+            animation: fadeIn 1s ease-in-out, glow 1.5s ease-in-out 0.5s;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+            margin: 0;
+            padding-top: 5px;
+            padding-bottom: 20px;
+        }
+
         /* General Styles */
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'LANENAR_', sans-serif;
             text-align: center;
             margin: 0;
             padding: 0;
-            background-color: #E6A9E6; /* Lilac background */
+            background: linear-gradient(-45deg, #f5a7b8, #b3e0d6, #d0c8f0, #ffdfba);
+            background-size: 400% 400%;
+            animation: gradientBG 10s ease infinite;
             overflow-x: hidden; /* Prevent horizontal scrolling */
             position: relative; /* For positioning the bubbles */
         }
 
-        /* Homepage Header with Glitter Animation */
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://www.transparenttextures.com/patterns/linen.png');
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        /* Homepage Header with fade-in and glow */
         #homepage-header {
             margin-top: 100px;
             animation: fadeIn 2s ease-in-out;
-            font-size: 3em;
-            font-weight: bold;
-            color: #D084E4; /* Lilac color for the header */
+            margin-bottom: 10px;
         }
 
-        #homepage-header h1 {
-            animation: glitter 3s linear infinite;
-        }
-
-        #homepage-header p {
-            font-size: 1.5em;
-            font-style: italic;
-            opacity: 0;
-            animation: fadeIn 2s ease-in-out 1s forwards;
-        }
-
+        /* Keyframe animation for fading in */
         @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Glow effect animation */
+        @keyframes glow {
+            0% { text-shadow: 0 0 5px #FFFFFF, 0 0 10px #FFFFFF, 0 0 15px #FFFFFF; }
+            50% { text-shadow: 0 0 10px #FFFFFF, 0 0 20px #FFFFFF, 0 0 30px #FFFFFF; }
+            100% { text-shadow: none; } /* Glow disappears */
+        }
+
+        .spray-container {
+            position: relative;
+            width: 100px;
+            height: 100px;
+        }
+
+        .spray {
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.7); /* Light white particles */
+            border-radius: 50%;
+            opacity: 0;
+            pointer-events: none;
+            animation: sprayEffect 1s forwards;
+        }
+
+        @keyframes sprayEffect {
             0% {
+                transform: scale(0) translate(0, 0);
+                opacity: 0.7;
+        }
+            100% {
+                transform: scale(1.5) translate(20px, 20px);
                 opacity: 0;
             }
-            100% {
+        }
+
+        .spray {
+            filter: blur(4px); 
+        }
+        
+        .spray {
+            animation: sprayFade 1s forwards;
+        }
+
+        @keyframes sprayFade {
+            0% {
+                transform: scale(0) translate(0, 0);
                 opacity: 1;
+            }
+        100% {
+                transform: scale(1.5) translate(20px, 20px);
+                opacity: 0;
             }
         }
 
-        @keyframes glitter {
+        /* Bubble Animation */
+        .bubbles {
+            position: fixed; /* Fix the bubbles in place to cover the entire page */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* Ensure bubbles stay in the background */
+            pointer-events: none;
+        }
+
+        .bubble {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite, glitter 2s linear infinite;
+        }
+
+        @keyframes float {
             0% {
-                text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.8);
+                transform: translateY(0) translateX(0) scale(1);
             }
             50% {
-                text-shadow: 0 0 20px rgba(255, 255, 255, 1), 0 0 30px rgba(255, 255, 255, 1);
+                transform: translateY(-100px) translateX(50px) scale(1.5);
             }
             100% {
-                text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.8);
+                transform: translateY(0) translateX(0) scale(1);
             }
+        }
+
+        /* Wishlist Box */
+        #wishlist {
+            width: 200px;
+            height: 300px;
+            border: 2px dashed #ccc;
+            margin-top: 20px;
+            text-align: center;
+            padding: 10px;
+            z-index: 2;
+        }
+
+        .dragging{
+            opacity: 0.5;
+        }
+
+        .wishlist-box {
+            width: 300px; /* Adjust the size as per your layout */
+            height: 300px; /* Adjust the size as per your layout */
+            border: 2px solid #ccc;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Style for the copied perfumes in the wishlist box */
+        .wishlist {
+            width: 80px; /* Shrinks the perfume to a smaller size */
+            height: 80px; /* Shrinks the perfume to a smaller size */
+            margin: 5px; /* Space between perfumes */
+            transform: scale(0.5); /* Shrinking effect */
+            transition: transform 0.3s ease; /* Smooth animation for shrinking */
         }
 
         /* Perfume Cards */
@@ -81,72 +245,66 @@
             transform: scale(1.1);
         }
 
-        /* Wishlist Box */
-        #wishlist {
-            width: 200px;
-            height: 300px;
-            border: 2px dashed #ccc;
-            margin-top: 20px;
-            text-align: center;
-            padding: 10px;
-            z-index: 2;
-        }
-
-        /* Bubble Animation */
-        .bubbles {
-            position: fixed; /* Fix the bubbles in place to cover the entire page */
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1; /* Ensure bubbles stay in the background */
-            pointer-events: none;
-        }
-
-        .bubble {
-            position: absolute;
-            width: 30px;
-            height: 30px;
-            background: rgba(255, 255, 255, 0.5);
-            border-radius: 50%;
-            animation: float 6s ease-in-out infinite, glitter 2s linear infinite;
-        }
-
-        @keyframes float {
-            0% {
-                transform: translateY(0) scale(1);
-            }
-            50% {
-                transform: translateY(-100px) scale(1.5);
-            }
-            100% {
-                transform: translateY(0) scale(1);
-            }
-        }
-
-        @keyframes glitter {
-            0% {
-                background: rgba(255, 255, 255, 0.5);
-            }
-            50% {
-                background: rgba(255, 255, 255, 0.9);
-            }
-            100% {
-                background: rgba(255, 255, 255, 0.5);
-            }
-        }
-
         /* Location and Response */
         #location, #server-response {
             margin-top: 20px;
         }
 
+        .perfume-item {
+            background: rgba(255, 255, 255, 0.25); /* Slightly more opaque */
+            backdrop-filter: blur(12px); /* Increased blur for a softer look */
+            border-radius: 15px; /* More rounded corners */
+            padding: 20px; /* More padding for better spacing */
+            transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Added subtle shadow */
+        }
+
+        .perfume-item:hover {
+            transform: scale(1.1); /* Slightly bigger scaling */
+            background: rgba(255, 255, 255, 0.35); /* More visible hover effect */
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Enhancing shadow on hover */
+        }
+
         /* Button Styles */
         button {
+            position: relative;
+            border-radius: 12px;
             padding: 10px 20px;
             font-size: 16px;
-            margin-top: 20px;
             cursor: pointer;
+            background-color: #008080;
+            color: #fff;
+            border: 2px solid transparent;
+            transition: all 0.3s ease-in-out;
+        }
+
+        button:hover {
+            transform: scale(1.1) translateY(-5px) rotate(5deg);
+            background-color: #008080;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            border-color: #90E4C1;
+        }
+
+        button:focus {
+            outline: none;
+            box-shadow: 0 0 10px rgba(255, 102, 204, 0.5); 
+        }
+
+        button::after {
+            content: '';
+            position: absolute;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            transform: scale(0);
+            animation: ripple 0.6s ease-out;
+            pointer-events: none;
+        }
+
+        @keyframes ripple {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
         }
 
         /* Allow scrolling of the page */
@@ -158,14 +316,83 @@
             margin-bottom: 100px; /* Give space for scrolling */
         }
 
+        /* Hamburger Menu Button */
+        .hamburger {
+            background-color: transparent; /* Transparent background */
+            border: none; /* No border */
+            font-size: 30px; /* Size of the button */
+            cursor: pointer; /* Pointer cursor on hover */
+            position: fixed; /* Fixed position */
+            top: 20px; /* Position from the top */
+            left: 20px; /* Position from the left */
+            z-index: 20; /* Ensure it stays above other content */
+        }
+
+        /* Navigation Bar Styles */
+        nav {
+            background-color: rgba(255, 255, 255, 0.9); /* Light background for the navbar */
+            position: fixed; /* Fix the navbar at the top */
+            top: 0; /* Align to the top */
+            left: 0; /* Align to the left */
+            width: 100%; /* Full width */
+            height: 60px; /* Height of the navbar */
+            z-index: 10; /* Ensure it stays above other content */
+            transition: transform 0.3s ease; /* Smooth transition */
+        }
+
+        /* Hide the navbar */
+        nav.hidden {
+            transform: translateY(-100%); /* Move the navbar out of view */
+        }
+
+        .navbar {
+            list-style-type: none; /* Remove bullet points */
+            margin: 0; /* Remove default margin */
+            padding: 0; /* Remove default padding */
+            display: flex; /* Flexbox for horizontal layout */
+            justify-content: space-around; /* Space items evenly */
+            align-items: center; /* Center items vertically */
+            height: 100%; /* Full height */
+        }
+
+        .navbar li {
+            margin: 0; /* No margin for list items */
+        }
+
+        .navbar a {
+            text-decoration: none; /* Remove underline from links */
+            color: #333; /* Dark text color */
+            font-weight: bold; /* Bold text */
+            padding: 10px 20px; /* Padding for links */
+            transition: background 0.3s; /* Smooth background transition */
+        }
+
+        .navbar a:hover {
+            background-color: #008080; /* Change background on hover */
+            color: white; /* Change text color on hover */
+        }
+
     </style>
 </head>
 <body>
+    <!-- Navigation Bar -->
+    <nav id="navbar" class="hidden">
+        <ul class="navbar">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#discover">Discover</a></li>
+            <li><a href="#reviews">Reviews and Ratings</a></li>
+            <li><a href="#wishlist">Wishlist</a></li>
+            <li><a href="#signup">Sign Up / Log In</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#feedback">Feedback</a></li>
+        </ul>
+    </nav>
 
     <!-- Homepage Header -->
     <div id="homepage-header">
         <h1>Parfumerie Vault</h1>
-        <p>The only Parfumerie you need</p>
+        <p>The only perfume finder you need.</p>
     </div>
 
     <!-- Bubbles Animation -->
@@ -174,6 +401,11 @@
         <div class="bubble" style="animation-delay: 1s; left: 20%;"></div>
         <div class="bubble" style="animation-delay: 2s; left: 30%;"></div>
         <div class="bubble" style="animation-delay: 3s; left: 40%;"></div>
+        <div class="bubble" style="animation-delay: 4s; left: 50%;"></div>
+        <div class="bubble" style="animation-delay: 5s; left: 60%;"></div>
+        <div class="bubble" style="animation-delay: 6s; left: 70%;"></div>
+        <div class="bubble" style="animation-delay: 7s; left: 80%;"></div>
+        <div class="bubble" style="animation-delay: 8s; left: 90%;"></div>
     </div>
 
     <!-- Perfume Wishlist Section -->
@@ -182,21 +414,25 @@
         <div class="box" id="wishlist" ondrop="drop(event)" ondragover="allowDrop(event)">Wishlist</div>
 
         <!-- Perfume Cards -->
-        <div class="perfume" id="perfume1" draggable="true" ondragstart="drag(event)">
-            <img src="CHgoodgirl.jpg" alt="Carolina Herrera Good Girl" style="width:100px;height:100px;">
+        <div class="perfume perfume-item" id="perfume1" draggable="true" ondragstart="drag(event)">
+            <img src="images/img1_crgg.png" alt="Carolina Herrera Good Girl" style="width:100px;height:150px;">
             <p>Carolina Herrera Good Girl</p>
+             <div class="spray-container spray"></div>
         </div>
-        <div class="perfume" id="perfume2" draggable="true" ondragstart="drag(event)">
-            <img src="CHblush.jpg" alt="Carolina Herrera Good Girl Blush" style="width:100px;height:100px;">
+        <div class="perfume perfume-item" id="perfume2" draggable="true" ondragstart="drag(event)">
+            <img src="images/img2_chggb.png" alt="Carolina Herrera Good Girl Blush" style="width:100px;height:150px;">
             <p>Carolina Herrera Good Girl Blush</p>
+             <div class="spray-container spray"></div>
         </div>
-        <div class="perfume" id="perfume3" draggable="true" ondragstart="drag(event)">
-            <img src="CHsparklingice.jpg" alt="Carolina Herrera Good Girl Sparkling Ice" style="width:100px;height:100px;">
+        <div class="perfume perfume-item" id="perfume3" draggable="true" ondragstart="drag(event)">
+            <img src="images/img3_chggsi.png" alt="Carolina Herrera Good Girl Sparkling Ice" style="width:100px;height:150px;">
             <p>Carolina Herrera Good Girl Sparkling Ice</p>
+             <div class="spray-container spray"></div>
         </div>
-        <div class="perfume" id="perfume4" draggable="true" ondragstart="drag(event)">
-            <img src="CHvelvetfatale.jpg" alt="Carolina Herrera Good Girl Velvet Fatale" style="width:100px;height:100px;">
+        <div class="perfume perfume-item" id="perfume4" draggable="true" ondragstart="drag(event)">
+            <img src="images/img4_chggvf.png" alt="Carolina Herrera Good Girl Velvet Fatale" style="width:100px;height:150px;">
             <p>Carolina Herrera Good Girl Velvet Fatale</p>
+             <div class="spray-container spray"></div>
         </div>
     </div>
 
@@ -205,11 +441,60 @@
     <button onclick="getLocation()">Find Stores</button>
     <p id="location"></p>
 
+    <h2>Find Nearby Stores</h2>
+    <button onclick="getLocation()">Find Stores</button>
+    <p id="location"></p>
+
     <h2>Server-Side Processing</h2>
     <button onclick="fetchNewPerfume()">Fetch New Perfume</button>
     <div id="server-response"></div>
 
+    <h1>Getting server updates</h1>
+    <div id="result"></div>
+
+    <!-- Button to Filter Group 6 SSE Updates -->
+    <button onclick="filterGroup6Updates()">Filter Group 6 Updates</button>
+    <div id="group6-updates"></div>
     <script>
+        let lastScrollTop = 0; // Variable to store the last scroll position
+        const navbar = document.getElementById('navbar'); // Get the navbar element
+
+        window.addEventListener('scroll', function() {
+            const currentScroll = window.pageYOffset || document.documentElement.scrollTop; // Get current scroll position
+
+            if (currentScroll > lastScrollTop) {
+                // Scrolling down
+                navbar.classList.add('hidden'); // Hide the navbar
+            } else {
+                // Scrolling up
+                navbar.classList.remove('hidden'); // Show the navbar
+            }
+            lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // For Mobile or negative scrolling
+        });
+
+        function createBubbles() {
+            const bubbleContainer = document.querySelector('.bubbles');
+            const numberOfBubbles = 20; // Adjust the number of bubbles as needed
+
+            for (let i = 0; i < numberOfBubbles; i++) {
+                const bubble = document.createElement('div');
+                bubble.classList.add('bubble');
+
+                // Set random position
+                bubble.style.left = Math.random() * 100 + 'vw'; // Random horizontal position
+                bubble.style.top = Math.random() * 100 + 'vh'; // Random vertical position
+
+                // Set random animation duration
+                const duration = Math.random() * 5 + 5; // Random duration between 5s and 10s
+                bubble.style.animationDuration = duration + 's';
+
+                bubbleContainer.appendChild(bubble);
+            }
+        }
+
+        // Call the function to create bubbles when the page loads
+        window.onload = createBubbles;
+
         // DRAG & DROP FUNCTIONALITY
         function allowDrop(event) {
             event.preventDefault(); // Allow the drop by preventing the default behavior
@@ -219,16 +504,28 @@
             event.dataTransfer.setData("text", event.target.id); // Set data for dragged item
         }
 
-        function drop(event) {
-            event.preventDefault(); // Prevent default behavior
-            let data = event.dataTransfer.getData("text"); // Get the dragged item
-            let draggedElement = document.getElementById(data);
+        function drop(ev) {
+    ev.preventDefault();
 
-            // Check if the dragged element is a perfume card
-            if (draggedElement.classList.contains("perfume")) {
-                event.target.appendChild(draggedElement); // Add the perfume card to wishlist
-            }
-        }
+    // Get the id of the dragged element
+    var data = ev.dataTransfer.getData('text');
+    var perfume = document.getElementById(data);
+    
+    // Clone the image of the perfume card into the wishlist
+    var clonedImage = perfume.querySelector('img').cloneNode(true); // Clone only the image
+    clonedImage.style.width = '80px'; // Shrink size
+    clonedImage.style.height = '80px'; // Shrink size
+    clonedImage.classList.add('wishlist-image'); // Add a class for styling
+
+    // Add click event to remove the image from wishlist
+    clonedImage.onclick = function() {
+        this.parentNode.removeChild(this); // Remove the clicked image
+    };
+
+    // Add cloned image to the wishlist
+    var wishlist = document.getElementById("wishlist");
+    wishlist.appendChild(clonedImage);
+}
 
         // GEOLOCATION
         function getLocation() {
@@ -252,6 +549,79 @@
                 .then(data => document.getElementById("server-response").innerHTML = data)
                 .catch(error => console.error('Error:', error));
         }
+
+ 
+        if (typeof(EventSource) !== "undefined") {
+            var source = new EventSource("https://lms.pb.edu.bn/wy2301/sse.php");
+
+            // Store all Group 6 updates in a variable
+            var group6Updates = [];
+
+            source.onmessage = function(event) {
+                console.log("Raw event data:", event.data); // Log the raw event data
+
+                // Check if event.data is a string or JSON
+                if (typeof event.data === "string") {
+                    // Only store updates that contain "#group06"
+                    if (event.data.toLowerCase().includes("#group06")) {
+                        group6Updates.push(event.data);
+                    }
+                } else {
+                    console.log("Unexpected data type:", event.data);
+                }
+            };
+        }
+
+        // Filter Group 6 Updates
+        function filterGroup6Updates() {
+            // Clear the previous filtered content
+            document.getElementById("group6-updates").innerHTML = "";
+
+            // Display all the stored Group 6 updates
+            group6Updates.forEach(update => {
+                // Append each update to the "group6-updates" div
+                const p = document.createElement("p");
+                p.textContent = update;
+                document.getElementById("group6-updates").appendChild(p);
+            });
+        }
+
+    function allowDrop(ev) {
+        ev.preventDefault();
+    }
+
+    function drag(ev) {
+        // Create a clone of the dragged element (perfume card)
+        var clone = ev.target.cloneNode(true);
+        clone.style.position = 'absolute';
+        clone.style.top = ev.pageY - ev.target.clientHeight / 2 + 'px';
+        clone.style.left = ev.pageX - ev.target.clientWidth / 2 + 'px';
+        ev.dataTransfer.setData('text', ev.target.id);
+    }
+
+    function drop(ev) {
+        ev.preventDefault();
+
+        // Get the id of the dragged element and find the cloned element
+        var data = ev.dataTransfer.getData('text');
+        var perfume = document.getElementById(data);
+        
+        // Clone the perfume card into the wishlist and apply shrinking effect
+        var clonedPerfume = perfume.cloneNode(true);
+        clonedPerfume.style.width = '80px'; // Shrink size
+        clonedPerfume.style.height = '80px'; // Shrink size
+        clonedPerfume.classList.add('wishlist');
+        
+        // Add click event to remove the perfume from wishlist
+        clonedPerfume.onclick = function() {
+            this.parentNode.removeChild(this); // Remove the clicked perfume
+        };
+
+        // Add cloned perfume to the wishlist
+        var wishlist = document.getElementById("wishlist");
+        wishlist.appendChild(clonedPerfume);
+    }
+
     </script>
 
 </body>
