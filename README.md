@@ -1,30 +1,37 @@
-For our HTML5 project, we are developing Parfumerie Vault, a perfume search website that helps users find perfumes based on their scent notes. To enhance user experience, we are integrating the following HTML5 features:
+**Parfumerie Vault: HTML5 Features Integration**
 
-1. Animation
+Our HTML5 project, Parfumerie Vault, is a perfume search website designed to help users find perfumes based on their scent notes. To enhance the user experience, we are integrating the following HTML5 features:
 
-To create a luxurious and interactive browsing experience, we will use CSS animations & JavaScript effects:
+### 1. Animation
+To create a luxurious and interactive browsing experience, we will use CSS animations and JavaScript effects:
 
-Homepage Animation: White bubbles rising with a glitter effect.
-Background Transition: Smooth image transitions for an elegant feel.
-Interactive Hover Effects: Perfume cards will enlarge or change color when hovered.
+- **Floating Bubbles:** White bubbles will float around in the background to add a dreamy, elegant effect.
+- **Gradient Background Transition:** A pastel-colored background will subtly transition through different gradients, creating a smooth, sophisticated ambiance.
+- **Interactive Hover Effects:** Perfume cards will enlarge or change color when hovered, making the browsing experience more engaging.
 
-2. Drag & Drop Functionality 
+### 2. Drag & Drop Functionality
+To provide a more interactive and organized user experience, we will implement drag-and-drop features:
 
-Users will be able to drag and drop elements for a more personalized experience:
+- **Wishlist Creation:** Users can drag perfumes into the wishlist box, where the item will be **duplicated** instead of removed from its original position.
+- **Item Adjustment:** Once placed in the wishlist, the perfume will **shrink in size** to prevent overlapping and ensure a neat arrangement.
+- **Easy Removal:** Users can remove a perfume from the wishlist by simply clicking on it, leaving the other items intact.
 
-Wishlist Creation: Drag perfumes into a wishlist.
-Category Sorting: Rearrange perfume categories based on preference.
+### 3. Geolocation
+To help users find perfume stores nearby, we will integrate the Geolocation API to:
 
-3. Geolocation 
+- **Display perfume stores on an interactive map.**
+- **Allow users to filter stores by location,** making it easier to find nearby stores.
 
-To help users find perfume stores nearby, we will use the Geolocation API to:
+### 4. Server-Sent Events (SSE)
+To provide real-time updates without requiring users to refresh the page, we will implement Server-Sent Events:
 
-Display perfume stores on an interactive map.
-Allow users to filter stores by location.
+- **Live Updates:** Users will receive real-time notifications about new perfume arrivals and promotions.
+- **Instant Notifications:** Updates will be displayed dynamically when new perfumes are added to the database.
 
-4. Server-Sent Events (SSE) 
+### 5. Navigation Bar Behavior
+For better usability, we are adding an intuitive navigation bar with dynamic visibility:
 
-To provide real-time updates without refreshing the page, we will implement Server-Sent Events to:
+- **Auto-Hide Feature:** The navigation bar will disappear when users scroll downward for a distraction-free experience.
+- **Reappear on Scroll Up:** When scrolling upwards, the navigation bar will reappear, ensuring easy access to website sections.
 
-Send live updates about new perfume arrivals & promotions.
-Display notifications when new perfumes are added.
+These features aim to make Parfumerie Vault a seamless and enjoyable platform for users searching for the perfect scent.
