@@ -407,12 +407,6 @@
             transition: transform 0.3s ease; /* Smooth transition */
         }
 
-        /* Hides the navbar by moving it up out of view when the class 'hidden' is added */
-        /* Reference: W3Schools. (n.d.). How TO - Hide Navbar on Scroll. https://www.w3schools.com/howto/howto_js_navbar_hide_scroll.asp */
-        nav.hidden {
-            transform: translateY(-100%); /* Move the navbar out of view */
-        }
-
         /* Style for the navigation bar container */
         /* Reference: W3Schools. (n.d.). CSS Navigation Bar. https://www.w3schools.com/css/css_navbar.asp */
 
@@ -454,7 +448,7 @@ It uses the <nav> and <ul> elements to create a responsive navigation menu that 
 Reference:
 W3Schools. (n.d.). HTML nav Tag. W3Schools. https://www.w3schools.com/tags/tag_nav.asp 
 -->
-<nav id="navbar" class="hidden">
+<nav id="navbar">
     <ul class="navbar">
         <li><a href="#home">Home</a></li>
         <li><a href="#discover">Discover</a></li>
@@ -571,23 +565,6 @@ MDN Web Docs. (2023). EventSource.onmessage. https://developer.mozilla.org/en-US
 <div id="group6-updates"></div>
 
 <script>
-/* 
-Shows/hides the navbar depending on scroll direction.
-Reference:
-GeeksforGeeks. (2022). How to hide and show navbar on scroll using JavaScript? https://www.geeksforgeeks.org/how-to-hide-and-show-navbar-on-scroll-using-javascript/ 
-*/
-let lastScrollTop = 0;
-const navbar = document.getElementById('navbar');
-
-window.addEventListener('scroll', function() {
-    const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-    if (currentScroll > lastScrollTop) {
-        navbar.classList.add('hidden');
-    } else {
-        navbar.classList.remove('hidden');
-    }
-    lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
-});
 
 /* 
 Dynamically creates animated bubbles when page loads.
