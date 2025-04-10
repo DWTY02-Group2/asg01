@@ -6,6 +6,8 @@
     <title>Parfumerie Vault</title>
     <style>
         
+        /* Added custom fonts using @font-face to apply specific typography styles for headings and body text */
+        /*MDN Web Docs. (n.d.). @font-face. Mozilla. Retrieved April 9, 2025, from https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face*/
         @font-face {
             font-family: 'AGraham';
             src: url('h1_font/agraham.woff2') format('woff2'),
@@ -23,6 +25,7 @@
 
 
         /* Apply the font to h1 */
+        /*MDN Web Docs. (n.d.). @keyframes. Mozilla. Retrieved April 9, 2025, from https://developer.mozilla.org/en-US/docs/Web/CSS/@keyframes*/
         #homepage-header h1 {
             font-family: 'AGraham', sans-serif;
             font-size: 3em;
@@ -43,6 +46,7 @@
         }
 
         /* Apply fade-in and glow effect to paragraph */
+        /*Coyier, C. (2023). How to create neon text with CSS. CSS-Tricks. https://css-tricks.com/how-to-create-neon-text-with-css/*/
         #homepage-header p {
             font-family: 'YesevaOne-Regular', sans-serif;
             font-size: 1.5em;
@@ -61,6 +65,8 @@
             text-align: center;
             margin: 0;
             padding: 0;
+            /* Applied a moving gradient background using CSS animations to enhance visual interest */
+            /*Coyier, C. (2021). The state of changing gradients with CSS transitions and animations. CSS-Tricks. https://css-tricks.com/the-state-of-changing-gradients-with-css-transitions-and-animations/*/
             background: linear-gradient(-45deg, #f5a7b8, #b3e0d6, #d0c8f0, #ffdfba);
             background-size: 400% 400%;
             animation: gradientBG 10s ease infinite;
@@ -74,6 +80,8 @@
             100% { background-position: 0% 50%; }
         }
 
+        /* Used ::before pseudo-element to overlay a subtle linen texture pattern over the gradient background */
+        /*Coyier, C. (2014). 7 practical uses for the ::before and ::after pseudo-elements in CSS. CSS-Tricks. https://css-tricks.com/7-practical-uses-for-the-before-and-after-pseudo-elements-in-css/*/
         body::before {
             content: "";
             position: absolute;
@@ -106,12 +114,15 @@
         }
 
         /* Glow effect animation */
-        @keyframes glow {
+        /*Coyier, C. (2023). How to create neon text with CSS. CSS-Tricks. https://css-tricks.com/how-to-create-neon-text-with-css/
+        @keyframes glow {*/
             0% { text-shadow: 0 0 5px #FFFFFF, 0 0 10px #FFFFFF, 0 0 15px #FFFFFF; }
             50% { text-shadow: 0 0 10px #FFFFFF, 0 0 20px #FFFFFF, 0 0 30px #FFFFFF; }
             100% { text-shadow: none; } /* Glow disappears */
         }
 
+        /* Created a spray effect using CSS animation that simulates perfume particles dispersing */
+        /*Coyier, C. (2021). Playing with particles using the Web Animations API. CSS-Tricks. https://css-tricks.com/playing-with-particles-using-the-web-animations-api/*/
         .spray-container {
             position: relative;
             width: 100px;
@@ -157,7 +168,10 @@
             }
         }
 
-        /* Bubble Animation */
+        /* 
+        Explanation: This style positions the bubble animation to cover the entire screen without affecting user interaction. It ensures the bubbles stay in the background and do not interfere with other elements.
+        Reference: W3Schools. (n.d.). CSS Positioning. https://www.w3schools.com/css/css_positioning.asp 
+        */
         .bubbles {
             position: fixed; /* Fix the bubbles in place to cover the entire page */
             top: 0;
@@ -168,6 +182,10 @@
             pointer-events: none;
         }
 
+        /* 
+        Explanation: This class styles individual bubbles with size, opacity, and two animations for floating and glittering effects.
+        Reference: MDN Web Docs. (n.d.). CSS animations. https://developer.mozilla.org/en-US/docs/Web/CSS/animation 
+        */
         .bubble {
             position: absolute;
             width: 30px;
@@ -177,6 +195,10 @@
             animation: float 6s ease-in-out infinite, glitter 2s linear infinite;
         }
 
+        /* 
+        Explanation: Defines the keyframes for a floating animation to simulate bubble movement.
+        Reference: MDN Web Docs. (n.d.). @keyframes. https://developer.mozilla.org/en-US/docs/Web/CSS/@keyframes 
+        */
         @keyframes float {
             0% {
                 transform: translateY(0) translateX(0) scale(1);
@@ -189,6 +211,10 @@
             }
         }
 
+        /* 
+        Explanation: Styles the wishlist drop zone with size, border, spacing, and layering.
+        Reference: W3Schools. (n.d.). HTML Drag and Drop API. https://www.w3schools.com/html/html5_draganddrop.asp 
+        */
         /* Wishlist Box */
         #wishlist {
             width: 200px;
@@ -200,36 +226,54 @@
             z-index: 2;
         }
 
-        .dragging{
+         /* 
+        Explanation: Provides visual feedback while dragging an element.
+        Reference: MDN Web Docs. (n.d.). CSS Transitions. https://developer.mozilla.org/en-US/docs/Web/CSS/transition 
+        */
+        .dragging {
             opacity: 0.5;
         }
 
+        /* 
+        Explanation: Container style for wishlist area with fixed dimensions and border.
+        Reference: MDN Web Docs. (n.d.). CSS overflow. https://developer.mozilla.org/en-US/docs/Web/CSS/overflow 
+        */
         .wishlist-box {
-            width: 300px; /* Adjust the size as per your layout */
-            height: 300px; /* Adjust the size as per your layout */
+            width: 300px;
+            height: 300px;
             border: 2px solid #ccc;
             position: relative;
             overflow: hidden;
         }
 
-        /* Style for the copied perfumes in the wishlist box */
+        /* 
+        Explanation: Styles copied perfume images with reduced size and animation.
+        Reference: W3Schools. (n.d.). CSS transform Property. https://www.w3schools.com/cssref/css3_pr_transform.asp 
+        */
         .wishlist {
-            width: 80px; /* Shrinks the perfume to a smaller size */
-            height: 80px; /* Shrinks the perfume to a smaller size */
-            margin: 5px; /* Space between perfumes */
-            transform: scale(0.5); /* Shrinking effect */
-            transition: transform 0.3s ease; /* Smooth animation for shrinking */
+            width: 80px;
+            height: 80px;
+            margin: 5px;
+            transform: scale(0.5);
+            transition: transform 0.3s ease;
         }
 
-        /* Perfume Cards */
+        /* 
+        Explanation: Flex container to align perfume cards centrally with spacing.
+        Reference: CSS-Tricks. (n.d.). A Complete Guide to Flexbox. https://css-tricks.com/snippets/css/a-guide-to-flexbox/ 
+        */
         .container {
             display: flex;
             justify-content: center;
             gap: 20px;
             margin-top: 20px;
-            z-index: 1; /* Make sure cards are above bubbles */
+            z-index: 1;
         }
 
+        /* 
+        Explanation: Individual perfume card with padding, border, and hover animation.
+        Reference: MDN Web Docs. (n.d.). CSS transitions. https://developer.mozilla.org/en-US/docs/Web/CSS/transition 
+        */
         .perfume {
             width: 150px;
             padding: 10px;
@@ -245,27 +289,37 @@
             transform: scale(1.1);
         }
 
-        /* Location and Response */
+        /* 
+        Explanation: Styles the container for location display and server responses.
+        Reference: W3Schools. (n.d.). HTML Geolocation. https://www.w3schools.com/html/html5_geolocation.asp 
+        */
         #location, #server-response {
             margin-top: 20px;
         }
 
+        /* 
+        Explanation: Additional styling for perfume cards with blur effect and hover animations.
+        Reference: CSS-Tricks. (2020). Using Backdrop Filter. https://css-tricks.com/almanac/properties/b/backdrop-filter/ 
+        */
         .perfume-item {
-            background: rgba(255, 255, 255, 0.25); /* Slightly more opaque */
-            backdrop-filter: blur(12px); /* Increased blur for a softer look */
-            border-radius: 15px; /* More rounded corners */
-            padding: 20px; /* More padding for better spacing */
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(12px);
+            border-radius: 15px;
+            padding: 20px;
             transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Added subtle shadow */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
         }
 
         .perfume-item:hover {
-            transform: scale(1.1); /* Slightly bigger scaling */
-            background: rgba(255, 255, 255, 0.35); /* More visible hover effect */
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Enhancing shadow on hover */
+            transform: scale(1.1);
+            background: rgba(255, 255, 255, 0.35);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
         }
 
-        /* Button Styles */
+        /* 
+        Explanation: Styling for interactive buttons with animations on hover and focus.
+        Reference: MDN Web Docs. (n.d.). CSS pseudo-elements. https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-elements 
+        */
         button {
             position: relative;
             border-radius: 12px;
@@ -287,7 +341,7 @@
 
         button:focus {
             outline: none;
-            box-shadow: 0 0 10px rgba(255, 102, 204, 0.5); 
+            box-shadow: 0 0 10px rgba(255, 102, 204, 0.5);
         }
 
         button::after {
@@ -298,8 +352,12 @@
             transform: scale(0);
             animation: ripple 0.6s ease-out;
             pointer-events: none;
-        }
 
+        }
+        /* 
+        Explanation: Ripple animation effect for button interaction.
+        Reference: Web Dev Simplified. (2021). https://www.youtube.com/watch?v=4wU2Z4uDnG4 
+        */
         @keyframes ripple {
             to {
                 transform: scale(4);
@@ -307,7 +365,10 @@
             }
         }
 
-        /* Allow scrolling of the page */
+                /* 
+        Explanation: Ensures full height of the page and gives space for scroll animations.
+        Reference: MDN Web Docs. (n.d.). CSS height property. https://developer.mozilla.org/en-US/docs/Web/CSS/height 
+        */
         html, body {
             height: 100%;
         }
@@ -316,7 +377,10 @@
             margin-bottom: 100px; /* Give space for scrolling */
         }
 
-        /* Hamburger Menu Button */
+        /* 
+        Explanation: Styles the hamburger menu button for mobile navigation.
+        Reference: W3Schools. (n.d.). Responsive Navigation Bar. https://www.w3schools.com/howto/howto_js_topnav_responsive.asp 
+        */
         .hamburger {
             background-color: transparent; /* Transparent background */
             border: none; /* No border */
@@ -328,8 +392,11 @@
             z-index: 20; /* Ensure it stays above other content */
         }
 
-        /* Navigation Bar Styles */
-        nav {
+             /* 
+            Explanation: Fixes the navigation bar at the top of the screen with visibility toggle on scroll.
+            Reference: MDN Web Docs. (n.d.). position: fixed. https://developer.mozilla.org/en-US/docs/Web/CSS/position 
+            */        
+            nav {
             background-color: rgba(255, 255, 255, 0.9); /* Light background for the navbar */
             position: fixed; /* Fix the navbar at the top */
             top: 0; /* Align to the top */
@@ -415,22 +482,22 @@
 
         <!-- Perfume Cards -->
         <div class="perfume perfume-item" id="perfume1" draggable="true" ondragstart="drag(event)">
-            <img src="images/img1_crgg.png" alt="Carolina Herrera Good Girl" style="width:100px;height:150px;">
+            <img src="https://i.postimg.cc/63GbpgJf/img1-crgg.png" alt="Carolina Herrera Good Girl" style="width:100px;height:150px;">
             <p>Carolina Herrera Good Girl</p>
              <div class="spray-container spray"></div>
         </div>
         <div class="perfume perfume-item" id="perfume2" draggable="true" ondragstart="drag(event)">
-            <img src="images/img2_chggb.png" alt="Carolina Herrera Good Girl Blush" style="width:100px;height:150px;">
+            <img src="https://i.postimg.cc/hGWFpRj8/img2-chggb.png" alt="Carolina Herrera Good Girl Blush" style="width:100px;height:150px;">
             <p>Carolina Herrera Good Girl Blush</p>
              <div class="spray-container spray"></div>
         </div>
         <div class="perfume perfume-item" id="perfume3" draggable="true" ondragstart="drag(event)">
-            <img src="images/img3_chggsi.png" alt="Carolina Herrera Good Girl Sparkling Ice" style="width:100px;height:150px;">
+            <img src="https://i.postimg.cc/qvKStDLN/img3-chggsi.png" alt="Carolina Herrera Good Girl Sparkling Ice" style="width:100px;height:150px;">
             <p>Carolina Herrera Good Girl Sparkling Ice</p>
              <div class="spray-container spray"></div>
         </div>
         <div class="perfume perfume-item" id="perfume4" draggable="true" ondragstart="drag(event)">
-            <img src="images/img4_chggvf.png" alt="Carolina Herrera Good Girl Velvet Fatale" style="width:100px;height:150px;">
+            <img src="https://i.postimg.cc/MHXrz9HK/img4-chggvf.png" alt="Carolina Herrera Good Girl Velvet Fatale" style="width:100px;height:150px;">
             <p>Carolina Herrera Good Girl Velvet Fatale</p>
              <div class="spray-container spray"></div>
         </div>
