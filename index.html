@@ -407,14 +407,10 @@
             transition: transform 0.3s ease; /* Smooth transition */
         }
 
-        /* Hides the navbar by moving it up out of view when the class 'hidden' is added */
-        /* Reference: W3Schools. (n.d.). How TO - Hide Navbar on Scroll. https://www.w3schools.com/howto/howto_js_navbar_hide_scroll.asp */
+        /* Hide the navbar */
         nav.hidden {
             transform: translateY(-100%); /* Move the navbar out of view */
         }
-
-        /* Style for the navigation bar container */
-        /* Reference: W3Schools. (n.d.). CSS Navigation Bar. https://www.w3schools.com/css/css_navbar.asp */
 
         .navbar {
             list-style-type: none; /* Remove bullet points */
@@ -430,8 +426,6 @@
             margin: 0; /* No margin for list items */
         }
 
-        /* Styles for anchor links inside navbar */
-        /* Reference: MDN Web Docs. (n.d.). :hover - CSS: Cascading Style Sheets. https://developer.mozilla.org/en-US/docs/Web/CSS/:hover */
         .navbar a {
             text-decoration: none; /* Remove underline from links */
             color: #333; /* Dark text color */
@@ -448,65 +442,42 @@
     </style>
 </head>
 <body>
-<!-- 
-This section defines the navigation bar with links to different sections of the page. 
-It uses the <nav> and <ul> elements to create a responsive navigation menu that becomes visible on scroll up.
-Reference:
-W3Schools. (n.d.). HTML nav Tag. W3Schools. https://www.w3schools.com/tags/tag_nav.asp 
--->
-<nav id="navbar">
-    <ul class="navbar">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#discover">Discover</a></li>
-        <li><a href="#reviews">Reviews and Ratings</a></li>
-        <li><a href="#wishlist">Wishlist</a></li>
-        <li><a href="#signup">Sign Up / Log In</a></li>
-        <li><a href="#about">About Us</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li><a href="#feedback">Feedback</a></li>
-    </ul>
-</nav>
+    <!-- Navigation Bar -->
+    <nav id="navbar" class="hidden">
+        <ul class="navbar">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#discover">Discover</a></li>
+            <li><a href="#reviews">Reviews and Ratings</a></li>
+            <li><a href="#wishlist">Wishlist</a></li>
+            <li><a href="#signup">Sign Up / Log In</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#feedback">Feedback</a></li>
+        </ul>
+    </nav>
 
-<!-- 
-This section introduces the homepage header including the brand name and slogan.
-Reference:
-W3Schools. (n.d.). HTML <h1> to <h6> Tags. https://www.w3schools.com/tags/tag_hn.asp 
--->
-<div id="homepage-header">
-    <h1>Parfumerie Vault</h1>
-    <p>The only perfume finder you need.</p>
-</div>
+    <!-- Homepage Header -->
+    <div id="homepage-header">
+        <h1>Parfumerie Vault</h1>
+        <p>The only perfume finder you need.</p>
+    </div>
 
-<!-- 
-Creates decorative bubble animation using multiple divs with different animation delays and horizontal positions.
-Reference:
-CSS-Tricks. (2019). Creating a Bubble Animation with CSS and JavaScript. https://css-tricks.com/creating-a-bubble-animation-with-css-and-javascript/ 
--->
-<div class="bubbles">
-    <div class="bubble" style="animation-delay: 0s; left: 10%;"></div>
-    <div class="bubble" style="animation-delay: 1s; left: 20%;"></div>
-    <div class="bubble" style="animation-delay: 2s; left: 30%;"></div>
-    <div class="bubble" style="animation-delay: 3s; left: 40%;"></div>
-    <div class="bubble" style="animation-delay: 4s; left: 50%;"></div>
-    <div class="bubble" style="animation-delay: 5s; left: 60%;"></div>
-    <div class="bubble" style="animation-delay: 6s; left: 70%;"></div>
-    <div class="bubble" style="animation-delay: 7s; left: 80%;"></div>
-    <div class="bubble" style="animation-delay: 8s; left: 90%;"></div>
-</div>
+    <!-- Bubbles Animation -->
+    <div class="bubbles">
+        <div class="bubble" style="animation-delay: 0s; left: 10%;"></div>
+        <div class="bubble" style="animation-delay: 1s; left: 20%;"></div>
+        <div class="bubble" style="animation-delay: 2s; left: 30%;"></div>
+        <div class="bubble" style="animation-delay: 3s; left: 40%;"></div>
+        <div class="bubble" style="animation-delay: 4s; left: 50%;"></div>
+        <div class="bubble" style="animation-delay: 5s; left: 60%;"></div>
+        <div class="bubble" style="animation-delay: 6s; left: 70%;"></div>
+        <div class="bubble" style="animation-delay: 7s; left: 80%;"></div>
+        <div class="bubble" style="animation-delay: 8s; left: 90%;"></div>
+    </div>
 
-<!-- 
-Heading for perfume wishlist feature.
-Reference:
-W3Schools. (n.d.). HTML <h2> Tag. https://www.w3schools.com/tags/tag_hn.asp 
--->
-<h2>Perfume Wishlist (Drag & Drop)</h2>
-
-<!-- 
-Container for drag-and-drop feature. Users can drag perfume items into the wishlist.
-Reference:
-MDN Web Docs. (2023). HTML Drag and Drop API. https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API 
--->
-<div class="container">
+    <!-- Perfume Wishlist Section -->
+    
+        <div class="container">
     <div class="box" id="wishlist" ondrop="drop(event)" ondragover="allowDrop(event)">Wishlist</div>
 
     <!-- 
@@ -535,202 +506,189 @@ MDN Web Docs. (2023). HTML Drag and Drop API. https://developer.mozilla.org/en-U
         <div class="spray-container spray"></div>
     </div>
 </div>
+    </div>
 
-<!-- 
-Geolocation feature to find user's current location using navigator.geolocation.
-Reference:
-W3Schools. (n.d.). HTML Geolocation API. https://www.w3schools.com/html/html5_geolocation.asp 
--->
-<h2>Find Nearby Stores</h2>
-<button onclick="getLocation()">Find Stores</button>
-<p id="location"></p>
+    <!-- Geolocation and Server-Side Processing -->
+    <h2>Find Nearby Stores</h2>
+    <button onclick="getLocation()">Find Stores</button>
+    <p id="location"></p>
 
-<!-- 
-Server interaction: Button to fetch new perfume suggestions from a backend server.
-Reference:
-MDN Web Docs. (2023). Fetch API. https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API 
--->
-<h2>Server-Side Processing</h2>
-<button onclick="fetchNewPerfume()">Fetch New Perfume</button>
-<div id="server-response"></div>
+    <h2>Server-Side Processing</h2>
+    <button onclick="fetchNewPerfume()">Fetch New Perfume</button>
+    <div id="server-response"></div>
 
-<!-- 
-SSE (Server-Sent Events) setup to receive live updates from the server.
-Reference:
-MDN Web Docs. (2023). Server-sent events. https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events 
--->
-<h1>Getting server updates</h1>
-<div id="result"></div>
+    <h1>Getting server updates</h1>
+    <div id="result"></div>
 
-<!-- 
-Button and display area for filtering only Group 6 related server updates.
-Reference:
-MDN Web Docs. (2023). EventSource.onmessage. https://developer.mozilla.org/en-US/docs/Web/API/EventSource/onmessage 
--->
-<button onclick="filterGroup6Updates()">Filter Group 6 Updates</button>
-<div id="group6-updates"></div>
+    <!-- Button to Filter Group 6 SSE Updates -->
+    <button onclick="filterGroup6Updates()">Filter Group 6 Updates</button>
+    <div id="group6-updates"></div>
+    <script>
+        let lastScrollTop = 0; // Variable to store the last scroll position
+        const navbar = document.getElementById('navbar'); // Get the navbar element
 
-<script>
-/* 
-Shows/hides the navbar depending on scroll direction.
-Reference:
-GeeksforGeeks. (2022). How to hide and show navbar on scroll using JavaScript? https://www.geeksforgeeks.org/how-to-hide-and-show-navbar-on-scroll-using-javascript/ 
-*/
-let lastScrollTop = 0;
-const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', function() {
+            const currentScroll = window.pageYOffset || document.documentElement.scrollTop; // Get current scroll position
 
-window.addEventListener('scroll', function() {
-    const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-    if (currentScroll > lastScrollTop) {
-        navbar.classList.add('hidden');
-    } else {
-        navbar.classList.remove('hidden');
-    }
-    lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
-});
+            if (currentScroll > lastScrollTop) {
+                // Scrolling down
+                navbar.classList.add('hidden'); // Hide the navbar
+            } else {
+                // Scrolling up
+                navbar.classList.remove('hidden'); // Show the navbar
+            }
+            lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // For Mobile or negative scrolling
+        });
 
-/* 
-Dynamically creates animated bubbles when page loads.
-Reference:
-CSS-Tricks. (2019). Creating a Bubble Animation with CSS and JavaScript. https://css-tricks.com/creating-a-bubble-animation-with-css-and-javascript/ 
-*/
-function createBubbles() {
-    const bubbleContainer = document.querySelector('.bubbles');
-    const numberOfBubbles = 20;
+        function createBubbles() {
+            const bubbleContainer = document.querySelector('.bubbles');
+            const numberOfBubbles = 20; // Adjust the number of bubbles as needed
 
-    for (let i = 0; i < numberOfBubbles; i++) {
-        const bubble = document.createElement('div');
-        bubble.classList.add('bubble');
-        bubble.style.left = Math.random() * 100 + 'vw';
-        bubble.style.top = Math.random() * 100 + 'vh';
-        const duration = Math.random() * 5 + 5;
-        bubble.style.animationDuration = duration + 's';
-        bubbleContainer.appendChild(bubble);
-    }
-}
+            for (let i = 0; i < numberOfBubbles; i++) {
+                const bubble = document.createElement('div');
+                bubble.classList.add('bubble');
 
-window.onload = createBubbles;
+                // Set random position
+                bubble.style.left = Math.random() * 100 + 'vw'; // Random horizontal position
+                bubble.style.top = Math.random() * 100 + 'vh'; // Random vertical position
 
-/* 
-Allows elements to be dragged into drop zones by preventing default dragover behavior.
-Reference:
-MDN Web Docs. (2023). HTML Drag and Drop API. https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API 
-*/
-function allowDrop(event) {
-    event.preventDefault();
-}
+                // Set random animation duration
+                const duration = Math.random() * 5 + 5; // Random duration between 5s and 10s
+                bubble.style.animationDuration = duration + 's';
 
-/* 
-Stores the ID of the dragged element so it can be referenced on drop.
-Reference:
-W3Schools. (n.d.). HTML Drag and Drop. https://www.w3schools.com/html/html5_draganddrop.asp 
-*/
-function drag(event) {
-    event.dataTransfer.setData("text", event.target.id);
-}
+                bubbleContainer.appendChild(bubble);
+            }
+        }
 
-/* 
-Handles drop by cloning perfume image and appending it to the wishlist.
-Reference:
-MDN Web Docs. (2023). DataTransfer.getData(). https://developer.mozilla.org/en-US/docs/Web/API/DataTransfer/getData 
-*/
-function drop(ev) {
+        // Call the function to create bubbles when the page loads
+        window.onload = createBubbles;
+
+        // DRAG & DROP FUNCTIONALITY
+        function allowDrop(event) {
+            event.preventDefault(); // Allow the drop by preventing the default behavior
+        }
+
+        function drag(event) {
+            event.dataTransfer.setData("text", event.target.id); // Set data for dragged item
+        }
+
+        function drop(ev) {
     ev.preventDefault();
+
+    // Get the id of the dragged element
     var data = ev.dataTransfer.getData('text');
     var perfume = document.getElementById(data);
-    var clonedImage = perfume.querySelector('img').cloneNode(true);
-    clonedImage.style.width = '80px';
-    clonedImage.style.height = '80px';
-    clonedImage.classList.add('wishlist-image');
+    
+    // Clone the image of the perfume card into the wishlist
+    var clonedImage = perfume.querySelector('img').cloneNode(true); // Clone only the image
+    clonedImage.style.width = '80px'; // Shrink size
+    clonedImage.style.height = '80px'; // Shrink size
+    clonedImage.classList.add('wishlist-image'); // Add a class for styling
+
+    // Add click event to remove the image from wishlist
     clonedImage.onclick = function() {
-        this.parentNode.removeChild(this);
+        this.parentNode.removeChild(this); // Remove the clicked image
     };
+
+    // Add cloned image to the wishlist
     var wishlist = document.getElementById("wishlist");
     wishlist.appendChild(clonedImage);
 }
 
-/* 
-Uses geolocation API to get user coordinates and display them.
-Reference:
-W3Schools. (n.d.). HTML Geolocation API. https://www.w3schools.com/html/html5_geolocation.asp 
-*/
-function getLocation() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
-    } else {
-        document.getElementById("location").innerHTML = "Geolocation not supported.";
-    }
-}
-
-function showPosition(position) {
-    document.getElementById("location").innerHTML =
-        "Latitude: " + position.coords.latitude + 
-        "<br>Longitude: " + position.coords.longitude;
-}
-
-/* 
-Fetches content from server using fetch API.
-Reference:
-MDN Web Docs. (2023). Fetch API. https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API 
-*/
-function fetchNewPerfume() {
-    fetch('server.php')
-        .then(response => response.text())
-        .then(data => document.getElementById("server-response").innerHTML = data)
-        .catch(error => console.error('Error:', error));
-}
-
-/* 
-Sets up an EventSource to receive server-sent messages. Filters for updates containing "#group06".
-Reference:
-MDN Web Docs. (2023). Server-sent events. https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events 
-*/
-if (typeof(EventSource) !== "undefined") {
-    var source = new EventSource("https://lms.pb.edu.bn/wy2301/sse.php");
-    var group6Updates = [];
-
-    source.onmessage = function(event) {
-        if (typeof event.data === "string" && event.data.toLowerCase().includes("#group06")) {
-            group6Updates.push(event.data);
+        // GEOLOCATION
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else {
+                document.getElementById("location").innerHTML = "Geolocation not supported.";
+            }
         }
-    };
 
-/* 
-Displays filtered Group 6 updates on the page.
-Reference:
-MDN Web Docs. (2023). Document.createElement(). https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement 
-*/
-function filterGroup6Updates() {
-    document.getElementById("group6-updates").innerHTML = "";
-    group6Updates.forEach(update => {
-        const p = document.createElement("p");
-        p.textContent = update;
-        document.getElementById("group6-updates").appendChild(p);
-    });
-}
+        function showPosition(position) {
+            document.getElementById("location").innerHTML =
+                "Latitude: " + position.coords.latitude + 
+                "<br>Longitude: " + position.coords.longitude;
+        }
 
-}
+        // FETCH DATA FROM SERVER
+        function fetchNewPerfume() {
+            fetch('server.php')
+                .then(response => response.text())
+                .then(data => document.getElementById("server-response").innerHTML = data)
+                .catch(error => console.error('Error:', error));
+        }
+
+ 
+        if (typeof(EventSource) !== "undefined") {
+            var source = new EventSource("https://lms.pb.edu.bn/wy2301/sse.php");
+
+            // Store all Group 6 updates in a variable
+            var group6Updates = [];
+
+            source.onmessage = function(event) {
+                console.log("Raw event data:", event.data); // Log the raw event data
+
+                // Check if event.data is a string or JSON
+                if (typeof event.data === "string") {
+                    // Only store updates that contain "#group06"
+                    if (event.data.toLowerCase().includes("#group06")) {
+                        group6Updates.push(event.data);
+                    }
+                } else {
+                    console.log("Unexpected data type:", event.data);
+                }
+            };
+        }
+
+        // Filter Group 6 Updates
+        function filterGroup6Updates() {
+            // Clear the previous filtered content
+            document.getElementById("group6-updates").innerHTML = "";
+
+            // Display all the stored Group 6 updates
+            group6Updates.forEach(update => {
+                // Append each update to the "group6-updates" div
+                const p = document.createElement("p");
+                p.textContent = update;
+                document.getElementById("group6-updates").appendChild(p);
+            });
+        }
 
     function allowDrop(ev) {
         ev.preventDefault();
     }
 
-    /* 
-This function is triggered when the user starts dragging a perfume card.
-It creates a visual clone of the card, positions it based on the cursor, and stores the dragged element’s ID for the drop event.
+    function drag(ev) {
+        // Create a clone of the dragged element (perfume card)
+        var clone = ev.target.cloneNode(true);
+        clone.style.position = 'absolute';
+        clone.style.top = ev.pageY - ev.target.clientHeight / 2 + 'px';
+        clone.style.left = ev.pageX - ev.target.clientWidth / 2 + 'px';
+        ev.dataTransfer.setData('text', ev.target.id);
+    }
 
-Reference:
-MDN Web Docs. (2023). DataTransfer.setData() - Web APIs. https://developer.mozilla.org/en-US/docs/Web/API/DataTransfer/setData
-*/
-function drag(ev) {
-    // Create a clone of the dragged element (perfume card)
-    var clone = ev.target.cloneNode(true);
-    clone.style.position = 'absolute';
-    clone.style.top = ev.pageY - ev.target.clientHeight / 2 + 'px';
-    clone.style.left = ev.pageX - ev.target.clientWidth / 2 + 'px';
+    function drop(ev) {
+        ev.preventDefault();
 
-    // Store the ID of the dragged element to be used in drop()
-    ev.dataTransfer.setData
+        // Get the id of the dragged element and find the cloned element
+        var data = ev.dataTransfer.getData('text');
+        var perfume = document.getElementById(data);
+        
+        // Clone the perfume card into the wishlist and apply shrinking effect
+        var clonedPerfume = perfume.cloneNode(true);
+        clonedPerfume.style.width = '80px'; // Shrink size
+        clonedPerfume.style.height = '80px'; // Shrink size
+        clonedPerfume.classList.add('wishlist');
+        
+        // Add click event to remove the perfume from wishlist
+        clonedPerfume.onclick = function() {
+            this.parentNode.removeChild(this); // Remove the clicked perfume
+        };
+
+        // Add cloned perfume to the wishlist
+        var wishlist = document.getElementById("wishlist");
+        wishlist.appendChild(clonedPerfume);
+    }
 
     </script>
 
